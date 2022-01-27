@@ -8,9 +8,9 @@ const Hello = (props) => {
     )
 }
 
-const Course = (props) => {
+const Head = (props) => {
     return (
-        <h1>{props.course}</h1>
+        <h1>{props.course.name}</h1>
     )
 }
 
@@ -21,7 +21,9 @@ const Part = (props) => {
 }
 
 const NbEx = (props) => {
-    const sum = props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises;
+    const sum = props.course.parts[0].exercises
+        + props.course.parts[1].exercises
+        + props.course.parts[2].exercises;
 
     return (
         <p>Number of exercises {sum}</p>
@@ -31,9 +33,9 @@ const NbEx = (props) => {
 const Content = (props) => {
     return (
         <div>
-            <Part title={props.parts[0].name} exercise={props.parts[0].exercises}/>
-            <Part title={props.parts[1].name} exercise={props.parts[1].exercises}/>
-            <Part title={props.parts[2].name} exercise={props.parts[2].exercises}/>
+            <Part title={props.course.parts[0].name} exercise={props.course.parts[0].exercises}/>
+            <Part title={props.course.parts[1].name} exercise={props.course.parts[1].exercises}/>
+            <Part title={props.course.parts[2].name} exercise={props.course.parts[2].exercises}/>
         </div>
     )
 }
@@ -44,21 +46,23 @@ const App = () => {
     const a = 10;
     const b = 20;
     const name = "Marlon";
-    const course = 'Half Stack application development'
-    const parts = [
-        {
-            name: 'Fundamentals of React',
-            exercises: 10
-        },
-        {
-            name: 'Using props to pass data',
-            exercises: 7
-        },
-        {
-            name: 'State of a component',
-            exercises: 14
-        }
-    ]
+    const course = {
+        name: 'Half Stack application development',
+        parts: [
+            {
+                name: 'Fundamentals of React',
+                exercises: 10
+            },
+            {
+                name: 'Using props to pass data',
+                exercises: 7
+            },
+            {
+                name: 'State of a component',
+                exercises: 14
+            }
+        ]
+    }
 
     return (
         <div>
@@ -69,9 +73,9 @@ const App = () => {
             </p>
             <Hello name={"Robin"} age={20}/>
             <Hello name={name} age={a + b}/>
-            <Course course={course}/>
-            <Content parts={parts}/>
-            <NbEx parts={parts}/>
+            <Head course={course}/>
+            <Content course={course}/>
+            <NbEx course={course}/>
         </div>
     )
 }
