@@ -26,6 +26,16 @@ const NbEx = (props) => {
     )
 }
 
+const Content = (props) => {
+    return (
+        <div>
+            <Part title={props.part1} exercise={props.exercises1}/>
+            <Part title={props.part2} exercise={props.exercises2}/>
+            <Part title={props.part3} exercise={props.exercises3}/>
+        </div>
+    )
+}
+
 const App = () => {
     console.log('Hello from component')
     const now = new Date();
@@ -42,6 +52,7 @@ const App = () => {
 
     return (
         <div>
+            <h1>Intro</h1>
             <p>Greetings</p>
             <p>
                 {a} plus {b} = {a + b}
@@ -49,9 +60,7 @@ const App = () => {
             <Hello name={"Robin"} age={20}/>
             <Hello name={name} age={a + b}/>
             <Course course={course}/>
-            <Part title={part1} exercise={exercises1}/>
-            <Part title={part2} exercise={exercises2}/>
-            <Part title={part3} exercise={exercises3}/>
+            <Content part1={part1} part2={part2} part3={part3} exercises1={exercises1} exercises2={exercises2} exercises3={exercises3}/>
             <NbEx nbr={exercises1 + exercises2 + exercises3}/>
         </div>
     )
